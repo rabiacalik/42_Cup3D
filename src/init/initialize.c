@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:32:07 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:32:08 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/07 15:31:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	initialize_image(t_cub3d *game)
 		return (1);
 }
 
+/*
+	mlx_init = minilibix kütüphanesini başlatıyoruz
+*/
 int	initialize(t_cub3d *init, char **argv)
 {
 	(init)->mlx = mlx_init();

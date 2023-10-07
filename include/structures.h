@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:30:20 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:30:21 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/07 15:33:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ typedef struct s_minimap
 
 typedef struct s_cub3d
 {
-	void		*mlx;
+	void		*mlx;		//minilibix kütüphanesi başlatıldı
 	void		*win;
 	size_t		loop;
 	t_map		*map;

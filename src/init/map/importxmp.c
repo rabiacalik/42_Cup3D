@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   importxmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:31:53 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:31:54 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/07 15:55:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ static int	load(int i, t_cub3d *game, char *line)
 	return (1);
 }
 
-//* 0xffffff == 255, 255, 255 == 16777215
+//* 0xffffff == 255, 255, 255 == 16777215 beyaz
+/*
+	color rengimizin kırmızı yeşil mavi değerlerinin birleştirilmesiyle oluşturuluyor
+	eğer satır F ile başlıyorsa color bot ile ilişkilendirilir (botton = zemin)
+	değilse color top ile ilişkilendirilir (tavan)
+*/
 static int	getcolor(t_cub3d *game, char *line)
 {
 	char	**rgb;
