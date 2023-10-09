@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rcalik <rcalik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:32:07 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/10/07 15:31:41 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/09 15:45:40 by rcalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+	key code ların başlangıç degerleri atanıyor sıfır olarak
+*/
 int	init_event(t_cub3d *game)
 {
 	game->onkey.keya = 0;
@@ -40,6 +43,8 @@ int	initialize_image(t_cub3d *game)
 
 /*
 	mlx_init = minilibix kütüphanesini başlatıyoruz
+	mlx_new_window = ekranı bastırıyoruz
+	
 */
 int	initialize(t_cub3d *init, char **argv)
 {
@@ -60,6 +65,8 @@ int	initialize(t_cub3d *init, char **argv)
 	mlx_hook(init->win, ON_KEYUP, 1L << 1, keyup, init);
 	mlx_hook(init->win, ON_DESTROY, 1L << 0, finish, init);
 	mlx_hook(init->win, ON_KEYDOWN, 1L << 0, keydown, init);
+
+	// pencerenin sürekli olarak güncellenmesi sağlanır 	
 	mlx_loop_hook(init->mlx, basic_loop, init);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 	getscreen(init);

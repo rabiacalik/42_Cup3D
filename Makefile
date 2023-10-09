@@ -145,7 +145,7 @@ run_libft:
 
 clean:
 	rm -f $(OBJECTS)
-	cd minilibx-macos && $(MAKE) clean
+	cd minilibx-macos && $(MAKE)
 	cd src/libft && $(MAKE) fclean
 
 fclean: clean

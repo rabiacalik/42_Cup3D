@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcalik <rcalik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:31:47 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:31:48 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:48:05 by rcalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int	move(t_cub3d *game)
 	return (retmove(game));
 }
 
+/*
+	belirli tuslara basılıp basılmadığını kontrol eder
+*/
 int	retmove(t_cub3d *game)
 {
 	if (game->onkey.keyw || game->onkey.keys || game->onkey.keya

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcalik <rcalik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:31:42 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:31:43 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:43:15 by rcalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	getscreen(t_cub3d *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 }
 
+/*
+	tus asağıdaysa degeri 1 yapar
+*/
 int	keydown(int keycode, t_cub3d *game)
 {
 	if (keycode == KEY_ESC)
@@ -44,6 +47,9 @@ int	keydown(int keycode, t_cub3d *game)
 	return (1);
 }
 
+/*
+	tus yukarıdaysa degeri 0 yapar
+*/
 int	keyup(int keycode, t_cub3d *game)
 {
 	if (keycode == KEY_ESC)

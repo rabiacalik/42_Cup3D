@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   moveutils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcalik <rcalik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:37:54 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:37:55 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:59:31 by rcalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+karakter sin cos işlemleri ile sola ve sağa dönmesi sağlanıyor
+*/
 void	turn(t_cub3d *game)
 {
 	double	olddirx;
@@ -41,6 +44,9 @@ void	turn(t_cub3d *game)
 		+ game->player->plane.y * cos(TURNSPEED);
 }
 
+/*
+	Bu fonksiyon, karakterin bakış açısını hızlı bir şekilde değiştirmek için kullanılır
+*/
 void	cursorturn(t_cub3d *game, int key)
 {
 	double	olddirx;
@@ -70,6 +76,10 @@ void	cursorturn(t_cub3d *game, int key)
 		+ game->player->plane.y * cos((TURNSPEED * 2));
 }
 
+/*
+	Kodun geri döndürdüğü değer, karakterin yeni bir pozisyona gitmesi için
+	gereken zamanı ifade eden bir mesafedir.
+*/
 static double	getdistance(double newpos)
 {
 	return (newpos * WALKINGSPEED * WLK);

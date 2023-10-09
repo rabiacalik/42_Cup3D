@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   playerinit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcalik <rcalik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:32:15 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:32:16 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:35:40 by rcalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+	setplane fonksiyonu, bir t_cub3d yapısı içindeki player öğesinin plane 
+	özelliğini ayarlamak için kullanılan bir fonksiyondur. Bu özellik, 
+	oyuncunun bakış açısına (kuzey, güney, batı veya doğu) bağlı olarak belirlenir. 
+	Fonksiyon, karakter d parametresine göre belirli bir yöne bakış açısına sahip 
+	olan plane özelliğini ayarlar.
+*/
 void	setplane(t_cub3d *game, char d)
 {
 	if (d == 'N')
@@ -36,6 +43,13 @@ void	setplane(t_cub3d *game, char d)
 	}
 }
 
+/*
+	Bu fonksiyon, bir t_cub3d yapısı içindeki player öğesinin dir 
+	özelliğini ayarlamak için kullanılır. Bu özellik, oyuncunun başlangıçta
+	hangi yöne bakacağını belirler. Fonksiyon, karakter c parametresine göre
+	belirli bir yöne bakış açısına sahip olan dir özelliğini ayarlar ve ardından 
+	setplane fonksiyonunu çağırarak oyuncunun bakış açısına uygun plane özelliğini ayarlar.
+*/
 void	getplayerdir(t_cub3d *game, char c)
 {
 	if (c == 'N')
@@ -61,6 +75,12 @@ void	getplayerdir(t_cub3d *game, char c)
 	setplane(game, c);
 }
 
+/*
+	Oyuncu karakterinin başlangıç pozisyonunu belirle.
+	Oyuncu karakterinin başlangıç bakış açısını belirle.
+	Haritada sadece bir oyuncu olup olmadığını kontrol et.
+	Oyuncu karakterini oluşturulan başlangıç değerleriyle doldur.
+*/
 int	initialize_player(t_cub3d *game)
 {
 	int	i;

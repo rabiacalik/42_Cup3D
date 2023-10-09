@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   mapcheck.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcalik <rcalik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:31:57 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:31:58 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/09 14:59:21 by rcalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+	Bu fonksiyon, haritanın yatay düzenini kontrol etmek için tasarlanmıştır ve 
+	bu işlemi gerçekleştirmek için birden fazla durumu kontrol eder. Örneğin, 
+	duvarın ardından gelen boşluğun düzeni bozup bozmadığını veya haritanın en 
+	sağındaki karakterin geçerli olup olmadığını kontrol eder.
+*/
 static int	horizontalcheck(char **map, int i, int j, int flag)
 {
 	while (map[++i])
@@ -21,7 +27,7 @@ static int	horizontalcheck(char **map, int i, int j, int flag)
 		while (map[i][++j])
 		{
 			if (flag == 0 && map[i][j] == '1')
-				flag ^= 1;
+					flag ^= 1;
 			if (flag == 0 && ft_strchr("NSEW0", map[i][j]))
 				return (0);
 			if (flag == 1 && map[i][j] == ' ')
