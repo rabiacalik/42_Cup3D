@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:32:26 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:32:27 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/08 11:41:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char	*ft_gnl_strchr(const char *s, int c)
 	return (NULL);
 }
 
+// iki stringi birleştiriyor ve dönüyor
 char	*ft_gnl_strjoin(char *s1, char *s2)
 {
 	unsigned int	i;

@@ -3,15 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   mapgenerate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:32:02 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/05/02 15:32:03 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/10/08 12:20:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+	bir harita dizinini belirli bir boyutta doldurmak ve aynı zamanda her karakterin
+	geçerli olup olmadığını kontrol etmek. boşluk karakteri ekleyerek satıları istenen uzunluğa 
+	dolduruyor.
+
+	geçerli karakter kontrolü yapılır
+		1 = duvarlar
+		0 = boş alan
+		N S E W = oyuncunun yönünü belirten karakterler
+		space = boş alan
+*/
 int	fill_mapspaces(char **map, int xlen, int i)
 {
 	int		j;
@@ -35,6 +46,16 @@ int	fill_mapspaces(char **map, int xlen, int i)
 	return (1);
 }
 
+/*
+	belirtilen dosya üzerinde okuma yaparak bir harita metni okur ve 
+	bu metni bir string olarak geriye döndürür.
+
+	ilk döngü dosyadan satır satır okuma yapar ve geçici olarak check e kaydeder
+	satırın ilk kaarakteri bir alt satıra geçişi temsil ediyorsa döngü kırılır
+
+	ikinci döngü satır satır okuma yapar ve ft_gnl_strjoin ile her okunan satırı 
+	önceki metin ile birleştirir
+*/
 char	*getmaptext(int fd)
 {
 	char	*str;
@@ -61,6 +82,12 @@ char	*getmaptext(int fd)
 	return (str);
 }
 
+/*
+	harita da iki alt boşluk varsa /n null döner
+	harita /n karakterlerine göre bölünerek map içerisine kaydedilir
+	hariya boyutları belirlenir
+	oluşturulan harita dizisi map değeri döndürülür
+*/
 char	**getmap(t_cub3d *game, int fd)
 {
 	size_t	tmp;
@@ -86,6 +113,10 @@ char	**getmap(t_cub3d *game, int fd)
 	return (map);
 }
 
+/*
+	fd üzerinde okuma yapar ve herbir satırı get next line ile alarak işler
+	herbir satırda importxpm kullanarak xpm dosyalarını yükler
+*/
 int	loadsprites(int fd, t_cub3d *game)
 {
 	char	*line;

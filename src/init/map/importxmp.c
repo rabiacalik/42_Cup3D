@@ -6,12 +6,19 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:31:53 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/10/07 15:55:29 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/08 11:32:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+	belirli bir indexteki bir xpm dosyasını yüklemek ve bu dosyadan elde edilen görüntü ve veri
+	adresini oyun yapısına kaydetmektir.
+
+	mlx_get_data_addr = verilen imege nin verisinin adresini almak için kullanılır.
+	mlx_xpm_file_to_image = xpm dosyasından bir image oluşturur
+*/
 static int	load(int i, t_cub3d *game, char *line)
 {
 	int		size;
@@ -58,6 +65,17 @@ static int	getcolor(t_cub3d *game, char *line)
 	return (0);
 }
 
+/*
+	harita ve görüntü dosyalarını yüklemek
+
+	satır başında yeni satır varsa sıfır dönüyor
+	
+	No - North - kuzey görüntüsü yükleniyor
+	So - South - güney görüntüsü yükleniyor
+	We - West - batı görüntüsü yükleniyor
+	Ea - East - doğu görüntüsü yükleniyor
+	F veya C renk degerleri alınıyor tavan-zemin
+*/
 int	importxpm(t_cub3d *game, char *line)
 {
 	if (!ft_strncmp(line, "\n", 1))
