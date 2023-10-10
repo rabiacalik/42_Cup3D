@@ -6,7 +6,7 @@
 /*   By: rcalik <rcalik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:32:07 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/10/09 15:45:40 by rcalik           ###   ########.fr       */
+/*   Updated: 2023/10/10 13:42:29 by rcalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	initialize_image(t_cub3d *game)
 /*
 	mlx_init = minilibix kütüphanesini başlatıyoruz
 	mlx_new_window = ekranı bastırıyoruz
-	
 */
 int	initialize(t_cub3d *init, char **argv)
 {
