@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:32:02 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/10/08 12:20:56 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/11 08:50:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ char	**getmap(t_cub3d *game, int fd)
 	char	*text;
 	char	*check;
 
-	text = getmaptext(fd);
+	text = getmaptext(fd); // ayırma işlemi zaten yapıldı
 	check = ft_strnstr(text, "\n\n", ft_strlen(text));
 	if (check)
 		return (0);
-	map = ft_split(text, '\n');
+	map = ft_split(text, '\n'); // neden tekrar ayırma işlemi yaptık
 	free(text);
 	game->map->y = 0;
 	game->map->x = 0;

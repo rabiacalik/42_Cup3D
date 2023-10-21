@@ -28,6 +28,7 @@ int	init_event(t_cub3d *game)
 	return (0);
 }
 
+// bu kısma tekrar bak
 int	initialize_image(t_cub3d *game)
 {
 	game->img = malloc(sizeof(t_data));
@@ -66,7 +67,7 @@ int	initialize(t_cub3d *init, char **argv)
 	mlx_hook(init->win, ON_KEYDOWN, 1L << 0, keydown, init);
 
 	// pencerenin sürekli olarak güncellenmesi sağlanır 	
-	mlx_loop_hook(init->mlx, basic_loop, init);
+	mlx_loop_hook(init->mlx, basic_loop, init); //anlamadım !!!!
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 	getscreen(init);
 	return (1);

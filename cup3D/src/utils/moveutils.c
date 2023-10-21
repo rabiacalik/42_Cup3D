@@ -26,10 +26,13 @@ void	turn(t_cub3d *game)
 	{
 		game->player->dir.x = game->player->dir.x * cos(-TURNSPEED)
 			- game->player->dir.y * sin(-TURNSPEED);
+
 		game->player->dir.y = olddirx * sin(-TURNSPEED)
 			+ game->player->dir.y * cos(-TURNSPEED);
+
 		game->player->plane.x = game->player->plane.x * cos(-TURNSPEED)
 			- game->player->plane.y * sin(-TURNSPEED);
+			
 		game->player->plane.y = oldplanex * sin(-TURNSPEED)
 			+ game->player->plane.y * cos(-TURNSPEED);
 		return ;

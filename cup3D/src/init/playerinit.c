@@ -95,7 +95,7 @@ int	initialize_player(t_cub3d *game)
 		{
 			if (ft_strchr("NSEW", game->map->map[i][j]))
 			{
-				game->player->pos.x = (double)j + 0.5;
+				game->player->pos.x = (double)j + 0.5; // neden
 				game->player->pos.y = (double)i + 0.5;
 				game->map->player_count++;
 				getplayerdir(game, game->map->map[i][j]);

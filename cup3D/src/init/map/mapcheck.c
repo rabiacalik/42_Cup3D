@@ -41,6 +41,7 @@ static int	horizontalcheck(char **map, int i, int j, int flag)
 	return (1);
 }
 
+// tekrar bakılacak
 static int	verticalcheck(char **map, int i, int j, int flag)
 {
 	while (map[0][++j])
