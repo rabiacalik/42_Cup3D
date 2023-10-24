@@ -11,7 +11,7 @@ int fill_map_spaces_and_check(char **map, int x_len)
 
     while (map[++i])
     {
-        // neden +1 !!!!!!!
+        // neden +1 çünkü horizontal_check de gerekli
         tmp = ft_calloc(x_len + 1, 1);
         j = -1;
 
@@ -135,8 +135,8 @@ int map_creat_and_controll(t_cup3d *game, char *map_file)
         return (!printf("Error : Unsupported character detected\n"));
 
     if (map_check(game->map->map))
-        return (!printf("Error : "));
-    // devam ediyor...
-
-
+        return (!printf("Error : Map characters are positioned incorrectly\n"));
+    
+    clos (map_file);
+    return (1);
 }
