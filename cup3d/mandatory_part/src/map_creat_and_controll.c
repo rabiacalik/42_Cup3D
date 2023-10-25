@@ -12,7 +12,7 @@ int fill_map_spaces_and_check(char **map, int x_len)
     while (map[++i])
     {
         // neden +1 çünkü horizontal_check de gerekli
-        tmp = ft_calloc(x_len + 1, 1);
+        tmp = ft_calloc(x_len + 1, 1); //// tmp free le !!!!!!!!!!
         j = -1;
 
         while (map[i][++j])
@@ -66,7 +66,7 @@ char **get_map(t_cup3d *game, int map_file)
     char *check;
 
     text_map = get_map_text(map_file);
-    check = ft_strnstr(text_map, "\n\n", ft_strlen(text_map)); //!!!
+    check = ft_strnstr(text_map, "\n\n", ft_strlen(text_map)); //!!! 
     if (check)
         return (0);
 
@@ -137,6 +137,6 @@ int map_creat_and_controll(t_cup3d *game, char *map_file)
     if (map_check(game->map->map))
         return (!printf("Error : Map characters are positioned incorrectly\n"));
     
-    clos (map_file);
+    close(map_file);
     return (1);
 }

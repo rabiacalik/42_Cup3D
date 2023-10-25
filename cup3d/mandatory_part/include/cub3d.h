@@ -6,6 +6,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <math.h>
+
 # include "mlx.h"
 
 //------ DEFINES ------//
@@ -15,6 +17,9 @@
 # define SCREEN_HEIGH 720
 
 # define FOV 0.66
+# define WALKINGSPEED 3
+# define WLK 0.015f
+# define TURNSPEED 0.03f
 
 # define ON_KEY_DOWN 2
 # define ON_KEY_UP 3
@@ -44,6 +49,54 @@ typedef struct s_vectord
 	double  x;
 	double  y;
 }   t_vectord;
+
+typedef struct s_vectori
+{
+	int		x;
+	int		y;
+}	t_vectori;
+
+
+
+
+
+
+
+
+typedef struct s_draw
+{
+	int			line_heigth;
+	int			color;
+	int			wall;
+	double		perpendicular_wall_dist;
+	double		wall_x;
+	double		step;
+	double		texpos;
+	t_vectori	draw_wall;
+	t_vectori	texture;
+}	t_draw;
+
+typedef struct s_raycast
+{
+	int			wall_flag;
+	int			wall_direction;
+	t_draw		draw;
+	t_vectord 	pos;
+	t_vectord 	dir;
+	t_vectord 	plane;
+	t_vectord 	map;
+	t_vectord 	delta_dist;
+	t_vectord 	step;
+	t_vectord 	side_dist;
+}	t_raycast;
+
+
+
+
+
+
+
+
 
 typedef struct s_character
 {
@@ -138,6 +191,10 @@ void		finish_game(t_cup3d *game);
 int			key_up(int keycode, t_cup3d *game);
 int			key_down(int keycode, t_cup3d *game);
 
+int			move(t_cup3d *game);
+void		draw_vertical(int x, t_cup3d *game, t_raycast *ray);
+int			basic_loop(t_cup3d *game);
+void		get_screen(t_cup3d *game);
 
 
 #endif

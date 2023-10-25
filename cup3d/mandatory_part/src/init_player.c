@@ -44,14 +44,14 @@ void    init_player_dir(t_cup3d *game, char c)
 {
 	if (c == 'N')
 	{
-		game->player->dir.x = 0;
-		game->player->dir.y = 1;
+		game->player->dir.x = 0;///////// tam tersi olması gerekmezmi +1
+		game->player->dir.y = -1;
 	}
 
 	else if (c == 'S')
 	{
 		game->player->dir.x = 0;
-		game->player->dir.y = -1;
+		game->player->dir.y = 1;
 	}
 
 	else if (c == 'E')

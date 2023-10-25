@@ -17,7 +17,7 @@ int horizontal_check(char **map)
 
         while (map[i][++j])
         {
-            if (flag == 0 && map[i][j] == '1')
+            if (flag == 0 && map[i][j] == '1')        
                 flag = 1;
             
             if (flag == 0 && ft_strchr("NESW0", map[i][j]))
@@ -47,7 +47,7 @@ int vertical_check(char **map)
         flag = 0;
         i = -1;
 
-        while (map[++i] && map[++i][j])
+        while (map[++i] && map[i][j])
         {
             if (flag == 0 && map[i][j] == '1')
                 flag = 1;

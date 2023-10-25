@@ -5,6 +5,18 @@ void finish_game(t_cup3d *game)
 	exit(mlx_destroy_window(game->mlx, game->win));
 }
 
+void get_screen(t_cup3d *game)
+{
+	raycast(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->image->img, 0, 0);
+}
+
+int basic_loop(t_cup3d *game)
+{
+	if (move(game))
+		get_screen(game);
+	return (0);
+}
 
 int key_up(int keycode, t_cup3d *game)
 {

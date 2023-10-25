@@ -10,9 +10,10 @@ static int map_asign_value(t_cup3d *game, char *line, int i)
     
     game->texture.xpm[i] = malloc(sizeof(t_data));
     tmp = game->texture.xpm[i];
-    sprite = ft_strndup(&line[3], ft_strlen(&line[3]) - 1);
+    sprite = ft_strndup(&line[3], ft_strlen(&line[3]) - 1);////!!!!!! -1 i silmemiz gerekiyor ama tekrar bak
     // addr ye tekarar bak !!!!!!!!!!
     tmp->img = mlx_xpm_file_to_image(game->mlx, sprite, &size, &size);
+    // degeerleri kendisi atıyor
     tmp->addr = mlx_get_data_addr(tmp->img, &(tmp->bits_per_pixel), &(tmp->line_length), &(tmp->endian));
 
     if (!(tmp->img) || !(tmp->addr))
