@@ -6,7 +6,7 @@ char	*ft_strchr(const char *s, int c)
 
 	if (!s)
 		return (0);
-	s_len = ft_gnl_strlen(s);
+	s_len = ft_strlen(s);
 	while (s_len >= 0)
 	{
 		if (*s == (char)c)

@@ -28,7 +28,7 @@
 # define ON_EXPOSE 12    //peki bu nee !!!!
 # define ON_DESTROY 17
 
-//# ifdef _APPLE_ !!!!!!!!! yorumdan çıkar
+//# ifdef _APPLE_ //!!!!!!!!! yorumdan çıkar
 #  define KEY_ESC 53
 #  define KEY_W 13
 #  define KEY_A 0
@@ -156,21 +156,23 @@ typedef struct s_cub3d
 	t_character *player;
 	t_data      *image;
 
-}   t_cup3d;
+}   t_cub3d;
 
 
 //----- FONCTION DEFİNİTİONS -----//
 
 //* map
-int         map_creat_and_controll(t_cup3d *game, char *map_file);
-int         map_xpm_to_image(t_cup3d *game, char *line);
+int         map_creat_and_controll(t_cub3d *game, char *map_file);
+int         map_xpm_to_image(t_cub3d *game, char *line);
 int         map_check(char **map);
 
 //* initialize
-int			initialize(t_cup3d *game, char **argv);
-void        init_keyboard_events(t_cup3d *game);
-int         init_player(t_cup3d *game);
-int			init_image(t_cup3d *game);
+int			initialize(t_cub3d *game, char **argv);
+void        init_keyboard_events(t_cub3d *game);
+int         init_player(t_cub3d *game);
+int			init_image(t_cub3d *game);
+void	init_player_plane(t_cub3d *game, char c);
+
 
 
 //* utils
@@ -178,23 +180,28 @@ size_t      ft_strlen(const char *s);
 int         ft_strrcmp(char *src, char *dest);
 char        *ft_strjoin(char const *s1, char const *s2);
 char        *get_next_line(int fd);
-int         ft_strncmp(const char *s1, const char *s2, size_t n);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
 char	    *ft_strndup(const char *str, size_t n);
 char	    **ft_split(char const *s, char c);
 int         ft_atoi(const char *nptr);
 char        *ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	    *ft_calloc(size_t nmemb, size_t size);
 char	    *ft_strchr(const char *s, int c);
+char		*ft_strdup(const char *s);
+size_t		ft_strlcpy(char *dest, char *src, size_t size);
+
+
 
 //* events
-void		finish_game(t_cup3d *game);
-int			key_up(int keycode, t_cup3d *game);
-int			key_down(int keycode, t_cup3d *game);
+void		finish_game(t_cub3d *game);
+int			key_up(int keycode, t_cub3d *game);
+int			key_down(int keycode, t_cub3d *game);
 
-int			move(t_cup3d *game);
-void		draw_vertical(int x, t_cup3d *game, t_raycast *ray);
-int			basic_loop(t_cup3d *game);
-void		get_screen(t_cup3d *game);
-
+int			move(t_cub3d *game);
+void		draw_vertical(int x, t_cub3d *game, t_raycast *ray);
+int			basic_loop(t_cub3d *game);
+void		get_screen(t_cub3d *game);
+void raycast(t_cub3d *game);
 
 #endif

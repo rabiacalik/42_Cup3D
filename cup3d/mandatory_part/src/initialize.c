@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 
-void init_keyboard_events(t_cup3d *game)
+void init_keyboard_events(t_cub3d *game)
 {
     game->key.key_w = 0;
     game->key.key_a = 0;
@@ -13,7 +13,7 @@ void init_keyboard_events(t_cup3d *game)
     game->key.key_right = 0;
 }
 
-int init_image(t_cup3d *game)
+int init_image(t_cub3d *game)
 {
     game->image = malloc(sizeof(t_data));
     ////// malloc kontrol !!!!!!!
@@ -26,18 +26,22 @@ int init_image(t_cup3d *game)
     return (1);
 }
 
-int initialize(t_cup3d *game, char **argv)
+int initialize(t_cub3d *game, char **argv)
 {
+     printf("**\n");
     game->mlx = mlx_init();
     if(!game->mlx)
         return (0);
+     printf("**\n");
     
     if(map_creat_and_controll(game, argv[1]))
         return (0);
+     printf("**\n");
 
-    game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGH, "cup3d");
+    game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGH, "cub3d");
     if (!game->win)
         return (0);
+     printf("**\n");
     
     init_keyboard_events(game);
 

@@ -1,13 +1,12 @@
 #include "cub3d.h"
-
-static int map_asign_value(t_cup3d *game, char *line, int i)
+// segantasyon yok
+static int map_asign_value(t_cub3d *game, char *line, int i)
 {
     int size;
     char *sprite;
     t_data *tmp;
 
     size = 64;
-    
     game->texture.xpm[i] = malloc(sizeof(t_data));
     tmp = game->texture.xpm[i];
     sprite = ft_strndup(&line[3], ft_strlen(&line[3]) - 1);////!!!!!! -1 i silmemiz gerekiyor ama tekrar bak
@@ -15,17 +14,15 @@ static int map_asign_value(t_cup3d *game, char *line, int i)
     tmp->img = mlx_xpm_file_to_image(game->mlx, sprite, &size, &size);
     // degeerleri kendisi atıyor
     tmp->addr = mlx_get_data_addr(tmp->img, &(tmp->bits_per_pixel), &(tmp->line_length), &(tmp->endian));
-
     if (!(tmp->img) || !(tmp->addr))
         return (0);
     
     if (sprite)
         free(sprite);
-    
     return (1);
 }
 
-int get_color(t_cup3d *game, char *line)
+int get_color(t_cub3d *game, char *line)
 {
     char **rgb;
     int color;
@@ -47,37 +44,32 @@ int get_color(t_cup3d *game, char *line)
     return(0);
 }
 
-int map_xpm_to_image(t_cup3d *game, char *line)
+int map_xpm_to_image(t_cub3d *game, char *line)
 {
     if (!ft_strncmp(line, "\n", 1))
         return (0);
-    
     if (!ft_strncmp(line, "NO ", 3))
     {
-        if (!map_asign_value(game, line, 0))
+       if (!map_asign_value(game, line, 0))
             return (printf("File Not Found : %s\n", &line[3]));
     }
-
     else if (!ft_strncmp(line, "SO ", 3))
     {
         if (!map_asign_value(game, line, 1))
             return (printf("File Not Found : %s\n", &line[3]));
     }
-
     else if (!ft_strncmp(line, "WE ", 3))
     {
         if (!map_asign_value(game, line, 2))
             return (printf("File Not Found : %s\n", &line[3]));
     }
-
     else if (!ft_strncmp(line, "EA ", 3))
     {
         if (!map_asign_value(game, line, 3))
             return (printf("File Not Found : %s\n", &line[3]));
     }
-
     else if (!ft_strncmp(line, "F", 2) || !ft_strncmp(line, "C", 2))
         return (get_color(game, line));
-        
     return (0);
+    
 }

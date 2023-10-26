@@ -1,8 +1,5 @@
 #include "cub3d.h"
 
-// ayni mi diye kontrol eder
-// ahmet - ahmet = ..>0 sıfırdan buyuk bir deger
-// ahmet - ahmit =
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	counter;

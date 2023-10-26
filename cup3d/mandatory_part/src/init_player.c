@@ -12,7 +12,7 @@
 		    S
 */
 
-void	init_player_plane(t_cup3d *game, char c)
+void	init_player_plane(t_cub3d *game, char c)
 {
 	//// neden yamuk baktırıyoruz !!!!!!!!!! plane neeeğğ
 	if (c == 'N')
@@ -40,7 +40,7 @@ void	init_player_plane(t_cup3d *game, char c)
 	}
 }
 
-void    init_player_dir(t_cup3d *game, char c)
+void    init_player_dir(t_cub3d *game, char c)
 {
 	if (c == 'N')
 	{
@@ -65,9 +65,10 @@ void    init_player_dir(t_cup3d *game, char c)
 		game->player->dir.x = -1;
 		game->player->dir.y = 0;
 	}
+	init_player_plane(game, c);     
 }
 
-int init_player(t_cup3d *game)
+int init_player(t_cub3d *game)
 {
 	int i;
 	int j;
@@ -90,8 +91,7 @@ int init_player(t_cup3d *game)
 
 				game->map->player_counter++;
 
-				init_player_dir(game, game->map->map[i][j]);
-				init_pleyer_plane(game, game->map->map[i][j]);          
+				init_player_dir(game, game->map->map[i][j]);     
 			}
 		}
 	}

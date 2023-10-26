@@ -1,7 +1,7 @@
 #include "cub3d.h"
 
 // rayy in pos, dir, plane degerleri playera göre atandi
-t_raycast init_raycast(t_cup3d *game)
+t_raycast init_raycast(t_cub3d *game)
 {
 	t_raycast ray;
 
@@ -74,7 +74,7 @@ t_raycast raycast_loop_start(t_raycast *ray, int x)
 	return (*ray);
 }
 
-t_raycast come_here_ray(t_cup3d *game, t_raycast *ray)
+t_raycast come_here_ray(t_cub3d *game, t_raycast *ray)
 {
 	while (ray->wall_flag == 0)
 	{
@@ -107,7 +107,7 @@ double get_perpendicular_dist(t_raycast *ray)
 		return (ray->side_dist.y - ray->delta_dist.y);
 }
 
-t_raycast set_wall(t_cup3d *game, t_raycast *ray)
+t_raycast set_wall(t_cub3d *game, t_raycast *ray)
 {
 	if (ray->wall_direction == 0)
 	{
@@ -128,7 +128,7 @@ t_raycast set_wall(t_cup3d *game, t_raycast *ray)
 	return (*ray);
 }
 
-t_raycast get_wall_length(t_cup3d *game, t_raycast *ray)
+t_raycast get_wall_length(t_cub3d *game, t_raycast *ray)
 {
 
 	ray->draw.perpendicular_wall_dist = get_perpendicular_dist(ray);
@@ -145,7 +145,7 @@ t_raycast get_wall_length(t_cup3d *game, t_raycast *ray)
 	return (*ray);
 }
 
-void raycast(t_cup3d *game)
+void raycast(t_cub3d *game)
 {
 	int x;
 	t_raycast ray;

@@ -58,8 +58,9 @@ char *get_map_text(int map_file)
     return (str); //haritayi tek dizi olarak döner
 }
 
-char **get_map(t_cup3d *game, int map_file)
+char **get_map(t_cub3d *game, int map_file)
 {
+
     size_t tmp;
     char **map;
     char *text_map;
@@ -69,11 +70,13 @@ char **get_map(t_cup3d *game, int map_file)
     check = ft_strnstr(text_map, "\n\n", ft_strlen(text_map)); //!!! 
     if (check)
         return (0);
+     
 
     map = ft_split(text_map, '\n');
     free(text_map);
     game->map->x = 0;
     game->map->y = 0;
+    
 
     // haritanin genisligi ve uzunlugu hesaplanir
     while (map[game->map->y])
@@ -82,28 +85,27 @@ char **get_map(t_cup3d *game, int map_file)
         if (game->map->x < tmp)
             game->map->x = tmp;
         game->map->y++;
+   
+
     }
     return (map);
 }
 
-int map_sprites_loading(int fd, t_cup3d *game)
+int map_sprites_loading(int fd, t_cub3d *game)
 {
     char *line;
     int i;
 
     i = 0;
     line = 0;
-
     while (1)
     {
         line = get_next_line(fd);
         i++;
-
         if (map_xpm_to_image(game, line))
             return (0);
-        
+        printf("/\n");
         free(line);
-
         //bot ve top degerleri de atanmissa buradaki is bitmistir
         if (game->texture.bot && game->texture.top)
             break;
@@ -111,21 +113,29 @@ int map_sprites_loading(int fd, t_cup3d *game)
     return (i);
 }
 
-int map_creat_and_controll(t_cup3d *game, char *map_file)
+int map_creat_and_controll(t_cub3d *game, char *map_file)
 {
     int fd;
 
-    game->map = malloc(sizeof(t_map)); // kontrol yapilmali !!!
+     printf("***\n");
 
-    if (ft_strlen(map_file) < 5 || ft_strrcmp(map_file, ".cup") != 0)
-        return (!printf("Error : Wrong file format : Correct file format : map_file.cup\n"));
+    game->map = malloc(sizeof(t_map)); // kontrol yapilmali !!!
+     printf("***\n");
+
+    if (ft_strlen(map_file) < 5 || ft_strrcmp(map_file, ".cub") != 0)
+        return (!printf("Error : Wrong file format : Correct file format : map_file.cub\n"));
     
     fd = open(map_file, O_RDONLY);
+
+    printf("%s\n", &map_file);
+	printf("%d\n", fd);
+
     if (fd < 0)
         return (!printf("Error : File not found : %s\n", map_file));
-
+// segmantasyon buradaaa !!!!!
     if (!map_sprites_loading(fd, game))
         return (!printf("Error : There was a problem loading map images\n"));
+        printf("//\n");
     
     game->map->map = get_map(game, map_file);
     if (!game->map->map)
@@ -136,7 +146,7 @@ int map_creat_and_controll(t_cup3d *game, char *map_file)
 
     if (map_check(game->map->map))
         return (!printf("Error : Map characters are positioned incorrectly\n"));
-    
+ 
     close(map_file);
     return (1);
 }

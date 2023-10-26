@@ -23,8 +23,8 @@ int ft_strrcmp(char *src, char *dest)
     
 }
 /*
-    map.cup 7
-    .cup    4
+    map.cub 7
+    .cub    4
     7 - 4 = 3
 
 */

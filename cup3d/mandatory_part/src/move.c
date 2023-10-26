@@ -5,7 +5,7 @@ static double  get_distance(double new_pos)
     return (new_pos * WALKINGSPEED * WLK);
 }
 
-void turn(t_cup3d *game)
+void turn(t_cub3d *game)
 {
     double old_dir_x;
     double old_plane_x;
@@ -31,7 +31,7 @@ void turn(t_cup3d *game)
     }
 }
 
-void set_pose(t_cup3d *game, double new_pos_x, double new_pos_y, char mod)
+void set_pose(t_cub3d *game, double new_pos_x, double new_pos_y, char mod)
 {
     double *pos_x;
     double *pos_y;
@@ -39,7 +39,7 @@ void set_pose(t_cup3d *game, double new_pos_x, double new_pos_y, char mod)
     pos_x = &(game->player->pos.x);
     pos_y = &(game->player->pos.y);
 
-    if (mod = '-')
+    if (mod == '-')
     {
         
         if (!(game->map->map[(int)(*pos_y - get_distance(new_pos_y))]))
@@ -53,7 +53,7 @@ void set_pose(t_cup3d *game, double new_pos_x, double new_pos_y, char mod)
         game->player->pos.y -= new_pos_y * (WALKINGSPEED * WLK);
     }
 
-    else if (mod = '+')
+    else if (mod == '+')
     {
         if (!(game->map->map[(int)(*pos_y + get_distance(new_pos_y))]))
             return;
@@ -68,7 +68,7 @@ void set_pose(t_cup3d *game, double new_pos_x, double new_pos_y, char mod)
 }
 
 /// gerek var mıydı !!!!!!!!!!!
-int ret_move(t_cup3d *game)
+int ret_move(t_cub3d *game)
 {
     if (game->key.key_w || game->key.key_a || game->key.key_s || game->key.key_d || game->key.key_left || game->key.key_right)
         return (1);
@@ -76,13 +76,13 @@ int ret_move(t_cup3d *game)
         return (0);
 }
 
-int move(t_cup3d *game)
+int move(t_cub3d *game)
 {
     if (game->key.key_w) // neden w-s de dir gonderirken, d-a da plane gonderiyoruz !!!!!!
-        set_pos(game, game->player->dir.x, game->player->dir.y, '+');
+        set_pose(game, game->player->dir.x, game->player->dir.y, '+');
 
     if (game->key.key_s)
-        set_pos(game, game->player->dir.x, game->player->dir.y, '-');
+        set_pose(game, game->player->dir.x, game->player->dir.y, '-');
 
     if (game->key.key_d)
         set_pose(game, game->player->plane.x, game->player->plane.y, '+');

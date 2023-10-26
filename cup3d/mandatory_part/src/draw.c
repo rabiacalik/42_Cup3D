@@ -22,7 +22,7 @@ size_t	get_texture_color(t_data *texture, int pixel_x, int pixel_y)
 			+ (pixel_x * texture->bits_per_pixel / 8))));
 }
 
-static void fill_image(int x, t_cup3d *game, t_raycast *ray)
+static void fill_image(int x, t_cub3d *game, t_raycast *ray)
 {
     size_t y;
     t_data *tmp;
@@ -47,7 +47,7 @@ static void fill_image(int x, t_cup3d *game, t_raycast *ray)
     }
 }
 
-void draw_vertical(int x, t_cup3d *game, t_raycast *ray)
+void draw_vertical(int x, t_cub3d *game, t_raycast *ray)
 {
     ray->draw.wall_x -= floor(ray->draw.wall_x); // sayıyı yakın degerine yuvarladık
     ray->draw.texture.x = (int)(ray->draw.wall_x * (double)(64));
